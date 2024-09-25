@@ -12,7 +12,15 @@ Posts
 <form method="post">
     @method('POST')
     @csrf
-    <input type="text" name="postTitle" id="postTitle" placeholder="Title">
+
+    <div>
+        <input type="text" name="title" id="postTitle" placeholder="Title">
+    </div>
+
+    <div>
+        <textarea name="content" id="postTitle" placeholder="Content"></textarea>
+    </div>
+
     <button type="submit">Criar</button>
 
 </form>
