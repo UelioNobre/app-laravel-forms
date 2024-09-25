@@ -10,6 +10,6 @@ Posts
 
 @section('content')
 
-{{ dd($request )}}
+{{ dd($post)}}
 
 @endsection
