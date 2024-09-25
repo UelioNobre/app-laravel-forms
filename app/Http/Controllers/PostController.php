@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -26,13 +27,16 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        // Validação dos dados recebidos
-        $validated = $request->validate([
-            'title' => 'bail|required|string|min:4|max:7',
-            'content' => 'required|string|min:4|max:7',
-        ]);
+        // Validação de todos os dados recebidos
+        $validated = $request->validate();
+
+        // Validação somente dos campos
+        // $validated = $request->safe()->only(['name', 'email']);
+
+        // Validação, exceto
+        // $validated = $request->safe()->except(['name', 'email']);
 
         // Criação do post após a validação
         Post::create($validated);

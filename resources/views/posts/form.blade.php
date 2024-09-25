@@ -28,11 +28,11 @@ Posts
     @csrf
 
     <div>
-        <input type="text" name="title" id="postTitle" placeholder="Title">
+        <input type="text" name="title" id="postTitle" placeholder="Title" value="{{ old('title') }}">
     </div>
 
     <div>
-        <textarea name="content" id="postTitle" placeholder="Content"></textarea>
+        <textarea name="content" id="postTitle" placeholder="Content">{{ old('content') }}</textarea>
     </div>
 
     <button type="submit">Criar</button>
