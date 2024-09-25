@@ -5,6 +5,20 @@ Posts
 @endsection
 
 @section('content-title')
+
+
+@if ($errors->any())
+
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+
 <h1>Posts / Add</h1>
 @endsection
 

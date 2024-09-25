@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -27,7 +28,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        return view('posts.store', ['request' => $request]);
+        // Validação dos dados recebidos
+        $validated = $request->validate([
+            'title' => 'bail|required|string|min:4|max:7',
+            'content' => 'required|string|min:4|max:7',
+        ]);
+
+        // Criação do post após a validação
+        Post::create($validated);
+
+        return redirect()->back()->with('success', 'Post criado com sucesso!');
     }
 
     /**
