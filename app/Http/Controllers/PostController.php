@@ -30,7 +30,7 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         // Validação de todos os dados recebidos
-        $validated = $request->validate();
+        // $validated = $request->validate();
 
         // Validação somente dos campos
         // $validated = $request->safe()->only(['name', 'email']);
@@ -39,7 +39,7 @@ class PostController extends Controller
         // $validated = $request->safe()->except(['name', 'email']);
 
         // Criação do post após a validação
-        Post::create($validated);
+        Post::create($request->validated());
 
         return redirect()->back()->with('success', 'Post criado com sucesso!');
     }
